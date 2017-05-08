@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="container">
+		<div class="img-container">
+			<img id="test1" class="gravity" alt="aenen" src="Image/Portrait1.jpg">
+		</div>
+
+		<div class="img-container">
+		<img id="test2" class="gravity" alt="aenen" src="Image/Portrait2.jpg">
+		</div>
+		<div class="img-container">
+		<img class="gravity" alt="aenen" src="Image/Portrait3.jpg">
+		</div>
+	</div>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="Script/gravity.js"></script>
+	<script>
+//		var link = $("#test1");
+//var offset = link.offset();
+//
+//var top = offset.top;
+//var left = offset.left;
+//
+//var bottom = top + link.outerHeight();
+//var right = left + link.outerWidth();
+
+		var pos = $("#test1").offset();
+		$("#test1").appendTo($("body")).css("position", "relative").offset(pos);
+		var timer = setInterval(function(){
+			var bodyHeight = $("body").outerHeight();
+			var elBottom = $("#test1").offset().top + $("#test1").outerHeight();
+
+			if (elBottom + 5 > bodyHeight) {
+				clearInterval(timer);
+				console.log("cleared");
+				return true;
+			}
+
+			var newtop = $("#test1").offset().top + 5;
+			$( "#test1" ).offset({ top: newtop, left: pos.left });
+
+		},1000 / 60); //60FPS
+	</script>
+</body>
+</html>
