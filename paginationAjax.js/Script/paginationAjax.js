@@ -95,7 +95,9 @@
      * @param {function} onSuccess Функція, яка виконується при успішному завантаженні даних.
      * @param {function} onError   Функція, яка виконується при не успішному завантаженні даних.
      */
-    function loadPage(page, append, onSuccess = $.noop, onError = $.noop) {
+    function loadPage(page, append, onSuccess, onError) {
+      onSuccess = typeof onSuccess=="undefined"? $.noop : onSuccess;
+      onError = typeof onError =="undefined"? $.noop : onError;
       var params = $.extend({ page: page }, settings.urlParameters);
       $.ajax({
         type: "GET",
@@ -368,8 +370,9 @@
             }
           },
 
-          "resize": function (e, onCreate = false) {
+          "resize": function (e, onCreate) {
 
+            onCreate = typeof onCreate == "undefined" ? false : onCreate;
             var currentWidth = $(thisElement).width();
 
             if (style["allPagesShrink"].data.prevWidth === currentWidth && !onCreate) {
