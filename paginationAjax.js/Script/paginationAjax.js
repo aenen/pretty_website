@@ -96,8 +96,8 @@
      * @param {function} onError   Функція, яка виконується при не успішному завантаженні даних.
      */
     function loadPage(page, append, onSuccess, onError) {
-      onSuccess = typeof onSuccess=="undefined"? $.noop : onSuccess;
-      onError = typeof onError =="undefined"? $.noop : onError;
+      onSuccess = typeof onSuccess == "undefined" ? $.noop : onSuccess;
+      onError = typeof onError == "undefined" ? $.noop : onError;
       var params = $.extend({ page: page }, settings.urlParameters);
       $.ajax({
         type: "GET",
@@ -271,7 +271,7 @@
             if (totalPages <= 1) {
               return false;
             }
-            
+
             // Шаблони елементів та контейнер:
             var container = $("<ul/>", { class: "pagination" }).css("display", "block");
             var pageElement = $("<a/>", { class: "page", 'data-page': 1 }).on("click", pageClick);
@@ -384,7 +384,7 @@
             var currentElement = $(thisElement).find("> ul.pagination > li.active:visible").last();
             var prevDropDown = $("ul.pagination li:has(div.dropup)").first();
             var nextDropDown = $("ul.pagination li:has(div.dropup)").last();
-            
+
             if (onCreate) {
               pageBigger();
               pageSmaller();
@@ -396,10 +396,10 @@
             } else {
               pageBigger();
             }
-            
+
             style["allPagesShrink"].data.prevWidth = currentWidth;
             settings.visiblePagesCount = liPages.length;
-                        
+
             function pageSmaller() {
 
               if (pages.last().position().top > pages.first().position().top) {
@@ -430,11 +430,11 @@
               while (prevDropDown.find("ul > li").length || nextDropDown.find("ul > li").length) {
                 var prevFromCurrent = currentElement.prevAll("li:has(> a:not(.page-nav))");
                 var nextFromCurrent = currentElement.nextAll("li:has(> a:not(.page-nav))");
-                
+
                 var showFirst = nextFromCurrent.length > prevFromCurrent.length;
                 showFirst = showFirst && !prevDropDown.find("ul > li").length ? false : showFirst;
                 showFirst = !showFirst && !nextDropDown.find("ul > li").length ? true : showFirst;
-                
+
                 if (showFirst) {
                   var liFromDropDown = prevDropDown.find("ul > li").last().insertBefore(liPages.first());
                   pages = $(thisElement).find("> ul.pagination > li:visible");

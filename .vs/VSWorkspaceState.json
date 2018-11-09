@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\gravity.js\\Style"
+    "\\pagination.js",
+    "\\pagination.js\\Script",
+    "\\paginationAjax.js",
+    "\\paginationAjax.js\\Script"
   ],
-  "SelectedNode": "\\paginationAjax.js",
+  "SelectedNode": "\\pagination.js\\Script\\pagination.min.js",
   "PreviewInSolutionExplorer": false
 }
