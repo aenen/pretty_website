@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Demo paginationAjax.js</title>
+	<link href="Style/pagination.css" rel="stylesheet" type="text/css" />
+	<link href="../_bin/bootstrap.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<div id="pagination-data" class="row" style="padding: 20px; background-color:lightpink; border: 3px solid hotpink; margin: 0 auto 25px auto">
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color:yellow"></div>
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color: pink"></div>
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color: red"></div>
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color: skyblue"></div>
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color: orange"></div>
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color: green"></div>
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color: cyan"></div>
+		<div class="col-sm-4 col-md-3" style="height: 150px; font-size:30px; background-color: magenta"></div>
+	</div>
+	<div id="pagination" class="text-center t-sweet-pink" style="max-width: 800px; margin: 10px auto"></div>
+
+	<script src="../_bin/jquery-3.2.1.min.js"></script>
+	<script src="../_bin/bootstrap.min.js"></script>
+	<script src="Script/paginationAjax.js"></script>
+	<script>
+		$(function() {
+
+			var contentPages = 133;
+
+			$("#pagination").paginationAjax('example.com/cute-animals-list', contentPages, paginationData);
+		});
+
+		var paginationData = {
+			dataElementSelector: "#pagination-data",
+			urlParameters: {
+				filter: "old",
+				animaltype: "mouse"
+			},
+			language: "uk-UA",
+
+			beforeLoadPage: function() {
+				console.log("Початок завантаження сторінки.")
+			},
+			afterLoadPageSuccess: function() {
+				console.log("Сторінка завантажена успішно.")
+			},
+			afterLoadPageError: function() {
+				console.log("Сталась помилка під час завантаження сторінки.")
+			},
+
+			loadMoreButton: true,
+			beforeLoadMore: function() {
+				console.log("Початок завантаження наступної сторінки.")
+			},
+			afterLoadMoreSuccess: function() {
+				console.log("Наступна сторінка завантажена успішно.")
+			},
+			afterLoadMoreError: function() {
+				console.log("Сталась помилка під час завантаження наступної сторінки.")
+			},
+
+			paginationStyle: "allPagesShrink",
+			paginationStyleFlexible: true,
+			visiblePagesCount: 10
+		};
+	</script>
+</body>
+</html>
